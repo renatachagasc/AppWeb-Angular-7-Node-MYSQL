@@ -1,0 +1,211 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Adicionar Produto</h4>
+                        <p class="card-category">Adicione informações gerais</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+
+                                <div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Cód. Barras">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder=" Descrição">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Unid.">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Vr. Compra">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Vr. Venda">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Estoque">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Referência/SKU.">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Redução do IVAST">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Lucro %">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="NCM">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Peso Bruto">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Peso Liq..">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Observação">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Adicionar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Produtos Cadastrados</h4>
+                        <p class="card-category"> Produtos cadastrados no sistema</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Código
+                                    </th>
+                                    <th>
+                                        Cód. Barra
+                                    </th>
+                                    <th>
+                                        Descrição
+                                    </th>
+                                    <th>
+                                        Unid.
+                                    </th>
+                                    <th>
+                                        Vr. Compra
+                                    </th>
+                                    <th>
+                                        Vr. Venda
+                                    </th>
+                                    <th>
+                                        Estoque
+                                    </th>
+                                    <th>
+                                        Ações
+                                    </th>
+
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            2154
+                                        </td>
+                                        <td>
+                                            Regata Básica
+                                        </td>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            15,00
+                                        </td>
+                                        <td>
+                                            35,00
+                                        </td>
+                                        <td>
+                                            30
+                                        </td>
+
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Editar"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remover"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            2
+                                        </td>
+                                        <td>
+                                            987736
+                                        </td>
+                                        <td>
+                                            Blusa Social
+                                        </td>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            78,00
+                                        </td>
+                                        <td>
+                                            120,00
+                                        </td>
+                                        <td>
+                                            20
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <button mat-raised-button type="button" matTooltip="Editar"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button mat-raised-button type="button" matTooltip="Remover"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
