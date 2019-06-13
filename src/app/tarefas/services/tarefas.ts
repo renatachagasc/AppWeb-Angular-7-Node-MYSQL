@@ -1,4 +1,4 @@
 export class Tarefa {
-    private nome: String;
-    private status: String;
+    private id: number;
+    private descricao: String;
 }

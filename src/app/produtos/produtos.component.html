@@ -15,84 +15,89 @@
                         <p class="card-category">Adicione informações gerais</p>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form formData="ngForm">
                             <div class="row">
-
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Cód. Barras">
+                                        <input id="cod" name="cod" matInput placeholder="Cód. Barras">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder=" Descrição">
+                                        <input id="nome" name="nome" matInput placeholder=" Nome">
                                     </mat-form-field>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-8">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Unid.">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Vr. Compra">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Vr. Venda">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Estoque">
+                                        <input id="descricao" name="descricao" matInput placeholder=" Descrição">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Referência/SKU.">
+                                        <input id="unid" name="unid" matInput placeholder="Unid.">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Redução do IVAST">
+                                        <input id="vrcompra" name="vrcompra" matInput placeholder="Vr. Compra">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Lucro %">
+                                        <input id="vrvenda" name="vrvenda" matInput placeholder="Vr. Venda">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="NCM">
+                                        <input id="estoque" name="estoque" matInput placeholder="Estoque">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Peso Bruto">
+                                        <input id="sku" name="sku" matInput placeholder="Referência/SKU.">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Peso Liq..">
+                                        <input id="red_ivast" name="red_ivast" matInput placeholder="Redução do IVAST">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input id="lucro" name="lucro" matInput placeholder="Lucro %">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input id="ncm" name="ncm" matInput placeholder="NCM">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input id="peso_bruto" name="peso_bruto" matInput placeholder="Peso Bruto">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input id="peso_liq" name="peso_liq" matInput placeholder="Peso Liq..">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Observação">
+                                        <input id="observacao" name="observacao" matInput placeholder="Observação">
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Adicionar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                (click)="adicionar(formData.value)" value="adicionar">Adicionar</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -107,7 +112,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" id="dataTable">
                                 <thead class=" text-primary">
                                     <th>
                                         Código
@@ -115,6 +120,7 @@
                                     <th>
                                         Cód. Barra
                                     </th>
+                                    <th> Nome</th>
                                     <th>
                                         Descrição
                                     </th>
@@ -133,66 +139,23 @@
                                     <th>
                                         Ações
                                     </th>
-
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            1
+                                    <tr *ngFor="let produto of this.produtos()">
+                                        <td></td>
+                                        <td>{{ produto.nome }}
+                                         </td>
+                                        <td>{{ produto.status }}
                                         </td>
                                         <td>
-                                            2154
                                         </td>
                                         <td>
-                                            Regata Básica
                                         </td>
                                         <td>
-                                            1
                                         </td>
                                         <td>
-                                            15,00
                                         </td>
                                         <td>
-                                            35,00
-                                        </td>
-                                        <td>
-                                            30
-                                        </td>
-
-                                        <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Editar"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">edit</i>
-                                            </button>
-                                            <button mat-raised-button type="button" matTooltip="Remover"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                            987736
-                                        </td>
-                                        <td>
-                                            Blusa Social
-                                        </td>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            78,00
-                                        </td>
-                                        <td>
-                                            120,00
-                                        </td>
-                                        <td>
-                                            20
                                         </td>
                                         <td class="td-actions text-right">
                                             <button mat-raised-button type="button" matTooltip="Editar"
