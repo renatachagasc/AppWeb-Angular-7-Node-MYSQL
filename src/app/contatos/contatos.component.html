@@ -2,6 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <div><button type="button" class="btn btn-danger" (click)="isCollapsed = !isCollapsed"
+                        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Adicionar Contato
+                    </button>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-12" id="collapseBasic" [collapse]="isCollapsed">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">Adicionar Contato</h4>
@@ -10,7 +17,6 @@
                     <div class="card-body">
                         <form>
                             <div class="row">
-
                                 <div class="col-md-2">
                                     <select class="selectpicker" placeholder="Tipo">
                                         <option>Cliente</option>
@@ -94,7 +100,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">

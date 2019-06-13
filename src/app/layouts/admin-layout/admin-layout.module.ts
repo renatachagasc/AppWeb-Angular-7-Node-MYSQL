@@ -21,6 +21,7 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+import { CollapseModule } from 'ngx-bootstrap';
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +32,7 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule,
+    MatTooltipModule,CollapseModule
   ],
   declarations: [
     DashboardComponent,
