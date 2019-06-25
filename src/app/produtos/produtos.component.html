@@ -15,18 +15,21 @@
                         <p class="card-category">Adicione informações gerais</p>
                     </div>
                     <div class="card-body">
-                        <form formData="ngForm">
+                        <form #formulario="ngForm" id="formulario" method="POST"
+                            (ngSubmit)="atualizar ? atualizarProduto(formulario) : criarProduto(formulario)">
                             <div class="row">
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="cod" name="cod" matInput placeholder="Cód. Barras">
+                                        <input id="cod" name="cod" matInput placeholder="Cód. Barras"
+                                            [(ngModel)]="produto.codigo">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="nome" name="nome" matInput placeholder=" Nome">
+                                        <input id="nome" name="nome" matInput placeholder=" Nome"
+                                            [(ngModel)]="produto.nome">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-8">
@@ -53,7 +56,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="estoque" name="estoque" matInput placeholder="Estoque">
+                                        <input id="estoque" name="estoque" matInput placeholder="Estoque"
+                                            [(ngModel)]="produto.status">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -70,7 +74,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="lucro" name="lucro" matInput placeholder="Lucro %">
+                                        <input id="lucro" name="lucro" matInput placeholder="Lucro %"
+                                            [(ngModel)]="produto.preco">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
@@ -97,7 +102,7 @@
                                 </div>
                             </div>
                             <button mat-raised-button type="submit" class="btn btn-danger pull-right"
-                                (click)="adicionar(formData.value)" value="adicionar">Adicionar</button>
+                                value="adicionar">Adicionar</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -141,10 +146,10 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let produto of this.produtos()">
+                                    <tr *ngFor="let produto of produto">
                                         <td></td>
                                         <td>{{ produto.nome }}
-                                         </td>
+                                        </td>
                                         <td>{{ produto.status }}
                                         </td>
                                         <td>

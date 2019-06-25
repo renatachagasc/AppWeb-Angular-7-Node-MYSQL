@@ -1,3 +1,4 @@
+import { Contato } from './../contatos/services/contatos';
 import { Component, OnInit } from '@angular/core';
 import { BancoConectionService } from './../services/banco-conection.service';
 import { FormGroup } from '@angular/forms';
@@ -12,33 +13,46 @@ import { EmpresasService } from './services/empresas.service';
 })
 
 export class EmpresasComponent implements OnInit {
-    //Visibilidade do Botão Adicionar
-    isCollapsed = true;
+  isCollapsed = true;
+  empresas: Array<any>;
+  empresa: any;
+  private formActived = false;
+  atualizar: boolean;
 
-    private empresa: Empresa;
-    private formActived = false;
-  
-    constructor(private empresa_service: EmpresasService) {
-      this.empresa = new Empresa();
-    }
-    // Adicionar novos produtos
-    public adicionar(form: FormGroup) {
-      this.empresa = form.value;
-      this.empresa_service.adicionarProduto(this.empresa);
-      console.log(this.empresas());
-    }
-    // Listar produtos
-    public empresas() {
-      return this.empresa_service.retornarEmpresas();
-    }
-  
-    public activeForm() {
-      this.formActived = true;
-    }
+  constructor(private empresa_service: EmpresasService) { }
+  public activeForm() {
+    this.formActived = true;
+  }
   ngOnInit() {
+    this.empresa = {};
 
   }
 
-  
+  criarEmpresa(formulario: FormGroup) {
+    this.empresa_service.criarEmpresa(this.empresa).subscribe(resposta => {
+    });
+    formulario.reset();
+  }
+
+  listarEmpresas() {
+    this.empresa_service.listarEmpresa().subscribe(resposta => this.empresa = resposta);
+  }
+  deletarEmpresa(i: any) {
+    this.empresa_service.deletarEmpresa(i).subscribe(resposta => {
+
+      this.listarEmpresas();
+    });
+
+  }
+  atualizarEmpresa(formulario: FormGroup) {
+    this.empresa_service.atualizarEmpresa(this.empresa.id, this.empresa).subscribe(resposta => {
+      console.log(resposta);
+
+    });
+    formulario.reset();
+
+  }
+
+
 
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 
@@ -27,4 +28,8 @@ export class BancoConectionService {
     return this.http.delete(this.URL_SERVIDOR + '/' + empresa);
 
   }
+  atualizarEmpresa( update: any): Observable<any> {
+    return this.http.put(`${this.URL_SERVIDOR}`, update);
+  }
+
 }

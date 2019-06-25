@@ -15,7 +15,8 @@
                             <p class="card-category">Adicione informações gerais</p>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form #formulario="ngForm" id="formulario" method="POST"  
+                            (ngSubmit)="atualizar ? atualizarEmpresa(formulario) : criarEmpresa(formulario)"  >
                                 <div class="row">
                                     
                                     <div class="col-md-2">
@@ -27,12 +28,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width">
-                                          <input id="razao_social" name="razao_social" matInput placeholder="Razão Social">
+                                          <input id="razao_social" name="razao_social" matInput placeholder="Razão Social" [(ngModel)]="empresa.razao" >
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width">
-                                          <input id="nome_fantasia" name="nome_fantasia" matInput placeholder="Nome Fantasia">
+                                          <input id="nome_fantasia" name="nome_fantasia" matInput placeholder="Nome Fantasia" [(ngModel)]="empresa.nome" >
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -107,7 +108,7 @@
       
                                     <div class="col-md-2">
                                       <mat-form-field class="example-full-width">
-                                        <input id="site" name="site" matInput placeholder="Site">
+                                        <input id="site" name="site" matInput placeholder="Site" [(ngModel)]="empresa.webSite" >
                                       </mat-form-field>
                                   </div>
                                     <div class="col-md-6">
@@ -177,20 +178,11 @@
                                         
                                   </thead>
                                   <tbody>
-                                      <tr>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
+                                      <tr *ngFor="let c of empresas">
+                                          <td>{{c.nome}}</td>
+                                          <td>{{c.razao}}</td>
+                                          <td>{{c.webSite}}</td>
+                                          
                                            <td class="td-actions text-right">
                                                 <button mat-raised-button type="button" matTooltip="Editar" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                                     <i class="material-icons">edit</i>

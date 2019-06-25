@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Empresa } from './empresas';
 
@@ -5,18 +7,31 @@ import { Empresa } from './empresas';
   providedIn: 'root'
 })
 export class EmpresasService {
-  
-  private empresas: Empresa[];
 
-  constructor() {
+  private empresas: Empresa[];
+  URL_SERVIDOR = 'http://localhost:3000/empresas';
+
+  constructor(private http: HttpClient) {
     this.empresas = [];
   }
 
-  public adicionarProduto(produto) {
-    this.empresas.push(produto);
+
+  listarEmpresa() {
+    return this.http.get<Array<any>>(`${this.URL_SERVIDOR}`);
   }
 
-  public retornarEmpresas() {
-    return this.empresas;
+  criarEmpresa(empresa: any) {
+    return this.http.post(this.URL_SERVIDOR, empresa);
   }
+
+  deletarEmpresa(empresa: any) {
+
+    console.log(empresa);
+    return this.http.delete(this.URL_SERVIDOR + '/' + empresa);
+
+  }
+  atualizarEmpresa(id: any, update: any): Observable<any> {
+    return this.http.put(`${this.URL_SERVIDOR}`, update);
+  }
+
 }

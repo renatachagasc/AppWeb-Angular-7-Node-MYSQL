@@ -9,32 +9,46 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./produtos.component.scss']
 })
 export class ProdutosComponent implements OnInit {
-  
-  //Visibilidade do Botão Adicionar
   isCollapsed = true;
-
-  private produto: Produto;
+  produtos: Array<any>;
+  produto: any;
+  atualizar: boolean;
   private formActived = false;
 
   constructor(private produto_service: ProdutosService) {
-    this.produto = new Produto();
-  }
-  // Adicionar novos produtos
-  public adicionar(form: FormGroup) {
-    this.produto = form.value;
-    this.produto_service.adicionarProduto(this.produto);
-    console.log(this.produtos());
-  }
-  // Listar produtos
-  public produtos() {
-    return this.produto_service.retornarProdutos();
-  }
 
+  }
   public activeForm() {
     this.formActived = true;
   }
-  
   ngOnInit() {
+    this.produto = {};
+  }
+
+
+  criarProduto(formulario: FormGroup) {
+    this.produto_service.criarProduto(this.produto).subscribe(resposta => {
+    });
+    formulario.reset();
+  }
+
+  listarProdutos() {
+    this.produto_service.listarProduto().subscribe(resposta => this.produto = resposta);
+  }
+  deletarProduto(i: any) {
+    this.produto_service.deletarProduto(i).subscribe(resposta => {
+
+      this.listarProdutos();
+    });
+
+  }
+  atualizarProduto(formulario: FormGroup) {
+    this.produto_service.atualizarProduto(this.produto.id, this.produto).subscribe(resposta => {
+      console.log(resposta);
+
+    });
+    formulario.reset();
+
   }
 
 }
