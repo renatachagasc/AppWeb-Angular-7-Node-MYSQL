@@ -19,14 +19,14 @@ export class ProdutosService {
     return this.http.get<Array<any>>(`${this.URL_SERVIDOR}`);
   }
 
-  criarProduto(empresa: any) {
-    return this.http.post(this.URL_SERVIDOR, empresa);
+  criarProduto(produto: any) {
+    return this.http.post(this.URL_SERVIDOR, produto);
   }
 
-  deletarProduto(empresa: any) {
+  deletarProduto(produto: any) {
 
-    console.log(empresa);
-    return this.http.delete(this.URL_SERVIDOR + '/' + empresa);
+    console.log(produto);
+    return this.http.delete(this.URL_SERVIDOR + '/' + produto);
 
   }
   atualizarProduto(id: any, update: any): Observable<any> {

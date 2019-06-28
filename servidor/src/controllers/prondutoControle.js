@@ -11,7 +11,7 @@ exports.criarProduto = (req,res,next)=>{
 };
 
 exports.listarProduto = (req,res,next)=>{
-    Produto.findAll({attributes: ["id", "nome"]}).then((produtos)=>{
+    Produto.findAll({attributes: ["id", "cod","unid","nome","descricao","vr_compra","vr_venda","estoque","sku","red_ivast","lucro","ncm","peso_bruto","peso_liq","observacao"]}).then((produtos)=>{
         res.status(status.OK).send(produtos);
     }).catch((erro)=>{
         next(erro);

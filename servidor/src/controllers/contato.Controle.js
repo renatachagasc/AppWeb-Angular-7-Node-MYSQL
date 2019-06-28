@@ -13,7 +13,7 @@ exports.criarContato = (req,res,next)=>{
 };
 
 exports.listarContato = (req,res,next)=>{
-    Contato.findAll({attributes: ["id", "nome"]}).then((contatos)=>{
+    Tarefa.findAll({attributes: ["id", "tipo_relacao", "nome_fantasia", "razao_social", "cep", "logradouro", "numero", "complemento", "bairro",  "municipio",  "estado", "status", "telefone", "celular", "email"]}).then((tarefas)=>{
         res.status(status.OK).send(contatos);
     }).catch((erro)=>{
         next(erro);

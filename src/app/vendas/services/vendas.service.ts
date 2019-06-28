@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Venda } from './vendas';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +10,27 @@ export class VendasService {
 
   private vendas: Venda[];
 
-  constructor() {
+  URL_SERVIDOR = 'http://localhost:3000/vendas';
+
+  constructor(private http: HttpClient) {
     this.vendas = [];
   }
 
-  public adicionarVendas(venda) {
-    this.vendas.push(venda);
+  listarVenda() {
+    return this.http.get<Array<any>>(`${this.URL_SERVIDOR}`);
   }
 
-  public retornarVendas() {
-    return this.vendas;
+  criarVenda(venda: any) {
+    return this.http.post(this.URL_SERVIDOR, venda);
+  }
+
+  deletarVenda(venda: any) {
+
+    console.log(venda);
+    return this.http.delete(this.URL_SERVIDOR + '/' + venda);
+
+  }
+  atualizarVenda(id: any, update: any): Observable<any> {
+    return this.http.put(`${this.URL_SERVIDOR}`, update);
   }
 }

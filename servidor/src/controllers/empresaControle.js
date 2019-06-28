@@ -18,7 +18,7 @@ exports.criarEmpresa = (req,res,next)=>{
 
 
 exports.listarEmpresa = (req,res,next)=>{
-    Empresa.findAll({attributes: ["id", "nome", "razao", "webSite"]}).then((empresas)=>{
+    Empresa.findAll({attributes: ["id", "cnpj","razao_social","nome_fantasia","cep","logradouro","numero","complemento","bairro","municipio","estado","inscricao_estadual","inscricao_municipal","ie_substituto", "telefone","celular","email"]}).then((empresas)=>{
         res.status(status.OK).send(empresas);
     }).catch((erro)=>{
         next(erro);

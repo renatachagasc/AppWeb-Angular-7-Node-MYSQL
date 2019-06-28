@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Venda } from './services/vendas';
 import { VendasService } from './services/vendas.service';
 
 @Component({
@@ -12,29 +11,42 @@ export class VendasComponent implements OnInit {
 
   //Visibilidade do Botão Adicionar
   isCollapsed = true;
-
-  private venda: Venda;
+  vendas: Array<any>;
+  venda: any;
   private formActived = false;
-
-  constructor(private venda_service: VendasService) {
-    this.venda = new Venda();
-  }
-  // Adicionar novos produtos
-  public adicionar(form: FormGroup) {
-    this.venda = form.value;
-    this.venda_service.adicionarVendas(this.venda);
-    console.log(this.vendas());
-  }
-  // Listar produtos
-  public vendas() {
-    return this.venda_service.retornarVendas();
-  }
-
+  atualizar: boolean;
+  constructor(private venda_service: VendasService) { }
   public activeForm() {
     this.formActived = true;
   }
-
   ngOnInit() {
+    this.venda = {};
+
+  }
+
+  criarVenda(formulario: FormGroup) {
+    this.venda_service.criarVenda(this.venda).subscribe(resposta => {
+    });
+    formulario.reset();
+  }
+
+  listarVenda() {
+    this.venda_service.listarVenda().subscribe(resposta => this.venda = resposta);
+  }
+  deletarVenda(i: any) {
+    this.venda_service.deletarVenda(i).subscribe(resposta => {
+
+      this.listarVenda();
+    });
+
+  }
+  atualizarVenda(formulario: FormGroup) {
+    this.venda_service.atualizarVenda(this.venda.id, this.venda).subscribe(resposta => {
+      console.log(resposta);
+
+    });
+    formulario.reset();
+
   }
 
 }

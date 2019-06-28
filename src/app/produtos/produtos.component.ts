@@ -16,7 +16,6 @@ export class ProdutosComponent implements OnInit {
   private formActived = false;
 
   constructor(private produto_service: ProdutosService) {
-
   }
   public activeForm() {
     this.formActived = true;

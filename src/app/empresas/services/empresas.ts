@@ -1,6 +1,7 @@
 export class Empresa {
     private cnpj: number;
     private razao_social: String;
+    private nome_fantasia: String;
     private cep: number;
     private logradouro: String;
     private numero: number;

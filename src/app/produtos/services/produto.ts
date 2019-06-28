@@ -3,8 +3,8 @@ export class Produto {
     private unid: number;
     private nome: String;
     private descricao: String;
-    private vrcompra: number;
-    private vrvenda: number;
+    private vr_compra: number;
+    private vr_venda: number;
     private estoque: number;
     private sku: number;
     private red_ivast: number;

@@ -1,8 +1,5 @@
-import { Contato } from './../contatos/services/contatos';
 import { Component, OnInit } from '@angular/core';
-import { BancoConectionService } from './../services/banco-conection.service';
 import { FormGroup } from '@angular/forms';
-import { Empresa } from './services/empresas';
 import { EmpresasService } from './services/empresas.service';
 
 

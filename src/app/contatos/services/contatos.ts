@@ -1,4 +1,5 @@
 export class Contato {
+    private tipo_relacao: String;
     private nome_fantasia: String;
     private razao_social: String;
     private cep: number;

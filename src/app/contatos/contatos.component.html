@@ -15,10 +15,11 @@
                         <p class="card-category">Adicione informações gerais</p>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form #formulario="ngForm" id="formulario" method="POST"  
+                        (ngSubmit)="atualizar ? atualizaContato(formulario) : criarContato(formulario)" >
                             <div class="row">
                                 <div class="col-md-2">
-                                    <select class="selectpicker" placeholder="Tipo">
+                                    <select class="selectpicker" placeholder="Tipo_relacao">
                                         <option>Cliente</option>
                                         <option>Fornecedor</option>
                                         <option>Vendedor</option>
@@ -28,69 +29,69 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="razao_social" name="razao_social" matInput placeholder="Razão Social">
+                                        <input id="razao_social" name="razao_social" matInput placeholder="Razão Social" [(ngModel)]="c.empresa.razao">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="nome_fantasia" name="nome_fantasia" matInput placeholder="Nome Fantasia">
+                                        <input id="nome_fantasia" name="nome_fantasia" matInput placeholder="Nome Fantasia" [(ngModel)]="c.nome_fantasia">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="cep" name="cep" matInput placeholder="CEP">
+                                        <input id="cep" name="cep" matInput placeholder="CEP" [(ngModel)]="c.cep">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="logradouro" name="logradouro" matInput placeholder="Logradouro">
+                                        <input id="logradouro" name="logradouro" matInput placeholder="Logradouro" [(ngModel)]="c.logradouro">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="numero" name="numero" matInput placeholder="Número">
+                                        <input id="numero" name="numero" matInput placeholder="Número" [(ngModel)]="c.numero">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="complemento" name="complemento" matInput placeholder="Complemento">
+                                        <input id="complemento" name="complemento" matInput placeholder="Complemento" [(ngModel)]="c.complemento">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="bairro" name="bairro" matInput placeholder="Bairro">
+                                        <input id="bairro" name="bairro" matInput placeholder="Bairro" [(ngModel)]="c.bairro">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="municipio" name="municipio" matInput placeholder="Município">
+                                        <input id="municipio" name="municipio" matInput placeholder="Município" [(ngModel)]="c.municipio">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="estado" name="estado" matInput placeholder="Estado">
+                                        <input id="estado" name="estado" matInput placeholder="Estado" [(ngModel)]="c.estado">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="telefone" name="telefone" matInput placeholder="Telefone">
+                                        <input id="telefone" name="telefone" matInput placeholder="Telefone" [(ngModel)]="c.telefone">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="celular" name="celular" matInput placeholder="Celular">
+                                        <input id="celular" name="celular" matInput placeholder="Celular" [(ngModel)]="c.celular">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="email" name="email" matInput placeholder="Email address" type="email">
+                                        <input id="email" name="email" matInput placeholder="Email address" type="email" [(ngModel)]="c.email">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -190,36 +191,45 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr *ngFor="let c of contatos">
                                         <td>
-                                            2
+                                            {{c.tipo_relacao}}
                                         </td>
                                         <td>
-                                            Rice
+                                            {{c.razao_social}}
                                         </td>
                                         <td>
-                                            Niger
+                                            {{c.nome_fantasia}}
                                         </td>
                                         <td>
-                                            Oud-Turnhout
+                                            {{c.cep}}
                                         </td>
                                         <td>
-                                            845
+                                            {{c.logradouro}}
                                         </td>
                                         <td>
-                                            Neopólis
+                                            {{c.numero}}
                                         </td>
                                         <td>
-                                            RN
+                                            {{c.complemento}}
                                         </td>
                                         <td>
-                                            94682005
+                                            {{c.bairro}}
                                         </td>
                                         <td>
-                                            94682005
+                                            {{c.municipio}}
                                         </td>
                                         <td>
-                                            Oud-Turnhout@gmail.com
+                                            {{c.estado}}
+                                        </td>
+                                        <td>
+                                            {{c.telefone}}
+                                        </td>
+                                        <td>
+                                            {{c.celular}}
+                                        </td>
+                                        <td>
+                                            {{c.email}}
                                         </td>
                                         <td class="td-actions text-right">
                                             <button mat-raised-button type="button" matTooltip="Editar"

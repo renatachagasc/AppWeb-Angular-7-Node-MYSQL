@@ -14,7 +14,7 @@ exports.criarVenda = (req,res,next)=>{
 
 
 exports.listarVenda = (req,res,next)=>{
-    Venda.findAll({attributes: ["id", "quantidade","valor"]}).then((vendas)=>{
+    Venda.findAll({attributes: ["id", "cod","data","cliente","vendedor","total_pago","cod_interno","estoque","item","unid","valor_unit","sub_total","desconto","total","descricao"]}).then((vendas)=>{
         res.status(status.OK).send(vendas);
     }).catch((error)=>{
         next(erro);

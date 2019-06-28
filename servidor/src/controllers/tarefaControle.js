@@ -12,7 +12,7 @@ exports.criarTarefa = (req,res,next)=>{
 };
 
 exports.listarTarefa = (req,res,next)=>{
-    Tarefa.findAll({attributes: ["id", "nome"]}).then((tarefas)=>{
+    Tarefa.findAll({attributes: ["id", "descricao"]}).then((tarefas)=>{
         res.status(status.OK).send(tarefas);
     }).catch((erro)=>{
         next(erro);

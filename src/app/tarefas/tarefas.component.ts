@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Tarefa } from './services/tarefas';
 import { TarefasService } from './services/tarefas.service';
 import { FormGroup } from '@angular/forms';
 
@@ -11,28 +10,42 @@ import { FormGroup } from '@angular/forms';
 export class TarefasComponent implements OnInit {
   //Visibilidade do Botão Adicionar
   isCollapsed = true;
-
-  private tarefa: Tarefa;
+  tarefas: Array<any>;
+  tarefa: any;
   private formActived = false;
-
-  constructor(private tarefa_service: TarefasService) {
-    this.tarefa = new Tarefa();
-  }
-  // Adicionar novas tarefas
-  public adicionar(form: FormGroup) {
-    this.tarefa = form.value;
-    this.tarefa_service.adicionarProduto(this.tarefa);
-    console.log(this.tarefas());
-  }
-  // Listar tarefas
-  public tarefas() {
-    return this.tarefa_service.retornarTarefas();
-  }
-
+  atualizar: boolean;
+  
+  constructor(private tarefa_service: TarefasService) { }
   public activeForm() {
     this.formActived = true;
   }
   ngOnInit() {
+    this.tarefa = {};
+
   }
 
+  criarTarefa(formulario: FormGroup) {
+    this.tarefa_service.criarTarefa(this.tarefa).subscribe(resposta => {
+    });
+    formulario.reset();
+  }
+
+  listarTarefa() {
+    this.tarefa_service.listarTarefa().subscribe(resposta => this.tarefa = resposta);
+  }
+  deletarTarefa(i: any) {
+    this.tarefa_service.deletarTarefa(i).subscribe(resposta => {
+
+      this.listarTarefa();
+    });
+
+  }
+  atualizarTarefa(formulario: FormGroup) {
+    this.tarefa_service.atualizarTarefa(this.tarefa.id, this.tarefa).subscribe(resposta => {
+      console.log(resposta);
+
+    });
+    formulario.reset();
+
+  }
 }

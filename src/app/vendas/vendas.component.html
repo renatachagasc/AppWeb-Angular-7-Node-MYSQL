@@ -15,88 +15,89 @@
                         <p class="card-category">Adicione informações gerais</p>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form #formulario="ngForm" id="formulario" method="POST"  
+                        (ngSubmit)="atualizar ? atualizaVenda(formulario) : criarVenda(formulario)">
                             <div class="row">
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="data" name="data" matInput placeholder="Data">
+                                        <input id="data" name="data" matInput placeholder="Data" [(ngModel)]="v.data">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="cliente" name="cliente" matInput placeholder="Cliente">
+                                        <input id="cliente" name="cliente" matInput placeholder="Cliente" [(ngModel)]="v.cliente">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="vendedor" name="vendedor" matInput placeholder="Vendedor">
+                                        <input id="vendedor" name="vendedor" matInput placeholder="Vendedor" [(ngModel)]="v.vendedor">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="cod_interno" name="cod_interno" matInput placeholder="Cód. Interno">
+                                        <input id="cod_interno" name="cod_interno" matInput placeholder="Cód. Interno" [(ngModel)]="v.cod_interno">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="item" name="item" matInput placeholder="Item">
+                                        <input id="item" name="item" matInput placeholder="Item" [(ngModel)]="v.item">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="cod_barras" name="cod_barras" matInput placeholder="Cód. Barras">
+                                        <input id="cod_barras" name="cod_barras" matInput placeholder="Cód. Barras" [(ngModel)]="v.cod_barras">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="ncm" name="ncm" matInput placeholder="NCM">
+                                        <input id="ncm" name="ncm" matInput placeholder="NCM" [(ngModel)]="v.ncm">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="unid" name="unid" matInput placeholder="Unid.">
+                                        <input id="unid" name="unid" matInput placeholder="Unid." [(ngModel)]="v.unid">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="quantidade" name="quantidade" matInput placeholder="Quantidade">
+                                        <input id="quantidade" name="quantidade" matInput placeholder="Quantidade" [(ngModel)]="v.quantidade">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="vr_unitario" name="vr_unitario" matInput placeholder="Vr. Unitário">
+                                        <input id="vr_unitario" name="vr_unitario" matInput placeholder="Vr. Unitário" [(ngModel)]="v.vr_unitario">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="sub_total" name="sub_total" matInput placeholder="Sub-Total R$">
+                                        <input id="sub_total" name="sub_total" matInput placeholder="Sub-Total R$" [(ngModel)]="v.sub_total">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="desconto_porcento" name="desconto_porcento" matInput placeholder="Desconto %.">
+                                        <input id="desconto_porcento" name="desconto_porcento" matInput placeholder="Desconto %." [(ngModel)]="v.desconto_porcento">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="desconto_reais" name="desconto_reais" matInput placeholder="Desconto R$">
+                                        <input id="desconto_reais" name="desconto_reais" matInput placeholder="Desconto R$" [(ngModel)]="v.desconto_reais">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="total" name="total" matInput placeholder="Total R$">
+                                        <input id="total" name="total" matInput placeholder="Total R$" [(ngModel)]="v.total">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <mat-form-field class="example-full-width">
-                                    <input id="observacao" name="observacao" matInput placeholder="Observação">
+                                    <input id="observacao" name="observacao" matInput placeholder="Observação" [(ngModel)]="v.observacao">
                                 </mat-form-field>
                             </div>
 
@@ -180,27 +181,51 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr *ngFor="let v of vendas">
                                         <td>
-                                            2
+                                            {{v.data}}
                                         </td>
                                         <td>
-                                            987736
+                                            {{v.cliente}}
                                         </td>
                                         <td>
-                                            Blusa Social
+                                            {{v.vendedor}}
                                         </td>
                                         <td>
-                                            1
+                                            {{v.cod_interno}}
                                         </td>
                                         <td>
-                                            78,00
+                                            {{v.item}}
                                         </td>
                                         <td>
-                                            120,00
+                                            {{v.cod_barras}}
                                         </td>
                                         <td>
-                                            20
+                                            {{v.ncm}}
+                                        </td>
+                                        <td>
+                                            {{v.unid}}
+                                        </td>
+                                        <td>
+                                            {{v.quantidade}}
+                                        </td>
+                                        <td>
+                                            {{v.vr_unitario}}                                        
+                                        </td>
+                                        <td>
+                                            {{v.sub_total}}
+                                        </td>
+                                        <td>
+                                            {{v.desconto_porcento}}                                        
+                                        </td>
+                                        <td>
+                                            {{v.desconto_reais}}
+                                        </td>
+                                        <td>
+                                            {{v.total}}
+                                        </td>
+                                        <td>
+                                            {{v.observacao}}
                                         </td>
                                         <td class="td-actions text-right">
                                             <button mat-raised-button type="button" matTooltip="Editar"

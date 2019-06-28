@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Contato } from './services/contatos';
 import { ContatosService } from './services/contatos.service';
 import { FormGroup } from '@angular/forms';
 
@@ -9,31 +8,44 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./contatos.component.scss']
 })
 export class ContatosComponent implements OnInit {
-    //Visibilidade do Botão Adicionar
-    isCollapsed = true;
-
-    private contato: Contato;
-    private formActived = false;
-  
-    constructor(private contato_service: ContatosService) {
-      this.contato = new Contato();
-    }
-    // Adicionar novos produtos
-    public adicionar(form: FormGroup) {
-      this.contato = form.value;
-      this.contato_service.adicionarProduto(this.contato);
-      console.log(this.contatos());
-    }
-    // Listar produtos
-    public contatos() {
-      return this.contato_service.retornarContatos();
-    }
-  
-    public activeForm() {
-      this.formActived = true;
-    }
-    
+  //Visibilidade do Botão Adicionar
+  isCollapsed = true;
+  contatos: Array<any>;
+  contato: any;
+  private formActived = false;
+  atualizar: boolean;
+  constructor(private contato_service: ContatosService) { }
+  public activeForm() {
+    this.formActived = true;
+  }
   ngOnInit() {
+    this.contato = {};
+
+  }
+
+  criarContato(formulario: FormGroup) {
+    this.contato_service.criarContato(this.contato).subscribe(resposta => {
+    });
+    formulario.reset();
+  }
+
+  listarContato() {
+    this.contato_service.listarContato().subscribe(resposta => this.contato = resposta);
+  }
+  deletarContato(i: any) {
+    this.contato_service.deletarContato(i).subscribe(resposta => {
+
+      this.listarContato();
+    });
+
+  }
+  atualizarContato(formulario: FormGroup) {
+    this.contato_service.atualizarContato(this.contato.id, this.contato).subscribe(resposta => {
+      console.log(resposta);
+
+    });
+    formulario.reset();
+
   }
 
 }
