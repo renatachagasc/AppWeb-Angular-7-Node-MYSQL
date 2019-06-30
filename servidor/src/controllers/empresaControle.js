@@ -18,7 +18,7 @@ exports.criarEmpresa = (req,res,next)=>{
 
 
 exports.listarEmpresa = (req,res,next)=>{
-    Empresa.findAll({attributes: ["id", "cnpj","razao_social","nome_fantasia","cep","logradouro","numero","complemento","bairro","municipio","estado","inscricao_estadual","inscricao_municipal","ie_substituto", "telefone","celular","email"]}).then((empresas)=>{
+    Empresa.findAll({attributes: ["id", "cnpj","razao_social","nome_fantasia","cep","logradouro","numero","complemento","bairro","municipio","estado","inscricao_estadual","inscricao_municipal", "telefone","celular","site","email"]}).then((empresas)=>{
         res.status(status.OK).send(empresas);
     }).catch((erro)=>{
         next(erro);
@@ -66,8 +66,9 @@ exports.atualizarEmpresa = (req,res,next)=>{
     }else{
         Empresa.findByPk(id).then((empresa)=>{
             if (empresa){
-                Empresa.update({nome: empresaBody.nome, razao : empresaBody.razao, webSite: empresaBody.webSite,
-                    docs: empresaBody.docs},{where : {id : id}}).then(()=>{
+
+                Empresa.update({cnpj: empresaBody.cnpj, razao_social: empresaBody.razao_social, nome_fantasia: empresaBody.nome_fantasia, cep: empresaBody.cep,logradouro:empresaBody.logradouro,numero:empresaBody.numero, complemento:empresaBody.complemento, bairro: empresaBody.bairro, municipio:empresaBody.municipio, estado:empresaBody.estado, inscricao_estadual:empresaBody,inscricao_municipal:empresaBody.inscricao_municipal, telefone:empresaBody.telefone, celular:empresaBody.celular, site:empresaBody.site, email:empresaBody.email
+                },{where : {id : id}}).then(()=>{
                     res.status(status.OK).send();
                 }).catch((erro)=>{
                     next(erro);

@@ -58,8 +58,7 @@ exports.atualizarTarefa = (req,res,next)=>{
     }else{
         Tarefa.findByPk(id).then((tarefa)=>{
             if (tarefa){
-                Tarefa.update({nome: tarefaBody.nome, posicao : tarefaBody.posicao, empresa: tarefaBody.empresa,
-                email: tarefaBody.email, telefone: tarefaBody.telefone, categoria: tarefaBody.categoria},{where : {id : id}}).then(()=>{
+                Tarefa.update({descricao: tarefaBody.descricao},{where : {id:id}}).then(()=>{
                     res.status(Status.OK).send();
                 }).catch((erro)=>{
                     next(erro);

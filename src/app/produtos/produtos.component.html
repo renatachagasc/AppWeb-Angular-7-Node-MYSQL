@@ -18,83 +18,81 @@
                         <form #formulario="ngForm" id="formulario" method="POST"
                             (ngSubmit)="atualizar ? atualizarProduto(formulario) : criarProduto(formulario)">
                             <div class="row">
+
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="cod" name="cod" matInput placeholder="Cód. Barras"
-                                            [(ngModel)]="p.cod">
+                                        <input id="id" name="id" matInput placeholder="ID" [(ngModel)]="produto.id"
+                                        disabled>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <mat-form-field class="example-full-width">
+                                        <input id="cod_barras" name="cod_barras" matInput placeholder="Cód. Barras"
+                                            [(ngModel)]="produto.cod_barras">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="nome" name="nome" matInput placeholder=" Nome" [(ngModel)]="p.nome">
+                                        <input id="nome" name="nome" matInput placeholder=" Nome" [(ngModel)]="produto.nome">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-8">
                                     <mat-form-field class="example-full-width">
-                                        <input id="descricao" name="descricao" matInput placeholder=" Descrição" [(ngModel)]="p.descricao">
+                                        <input id="descricao" name="descricao" matInput placeholder=" Descrição" [(ngModel)]="produto.descricao">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="unid" name="unid" matInput placeholder="Unid." [(ngModel)]="p.unid">
+                                        <input id="unid" name="unid" matInput placeholder="Unid." [(ngModel)]="produto.unid">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="vr_compra" name="vr_compra" matInput placeholder="Vr. Compra" [(ngModel)]="p.vr_compra">
+                                        <input id="vr_compra" name="vr_compra" matInput placeholder="Vr. Compra" [(ngModel)]="produto.vr_compra">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="vr_venda" name="vr_venda" matInput placeholder="Vr. Venda" [(ngModel)]="p.vr_venda">
+                                        <input id="vr_venda" name="vr_venda" matInput placeholder="Vr. Venda" [(ngModel)]="produto.vr_venda">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="estoque" name="estoque" matInput placeholder="Estoque" [(ngModel)]="p.estoque">
+                                        <input id="estoque" name="estoque" matInput placeholder="Estoque" [(ngModel)]="produto.estoque">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3">
+                                
+                                <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="sku" name="sku" matInput placeholder="Referência/SKU."  [(ngModel)]="p.sku">
+                                        <input id="lucro" name="lucro" matInput placeholder="Lucro %" [(ngModel)]="produto.lucro">
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="red_ivast" name="red_ivast" matInput placeholder="Redução do IVAST" [(ngModel)]="p.red_ivast">
+                                        <input id="ncm" name="ncm" matInput placeholder="NCM"  [(ngModel)]="produto.ncm">
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="lucro" name="lucro" matInput placeholder="Lucro %" [(ngModel)]="p.lucro">
+                                        <input id="peso_bruto" name="peso_bruto" matInput placeholder="Peso Bruto"  [(ngModel)]="produto.peso_bruto">
                                     </mat-form-field>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="ncm" name="ncm" matInput placeholder="NCM"  [(ngModel)]="p.ncm">
+                                        <input id="peso_liq" name="peso_liq" matInput placeholder="Peso Liq.." [(ngModel)]="produto.peso_liq">
                                     </mat-form-field>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="peso_bruto" name="peso_bruto" matInput placeholder="Peso Bruto"  [(ngModel)]="p.peso_bruto">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-3">
-                                    <mat-form-field class="example-full-width">
-                                        <input id="peso_liq" name="peso_liq" matInput placeholder="Peso Liq.." [(ngModel)]="p.peso_liq">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-6">
-                                    <mat-form-field class="example-full-width">
-                                        <input id="observacao" name="observacao" matInput placeholder="Observação" [(ngModel)]="p.observacao">
+                                        <input id="observacao" name="observacao" matInput placeholder="Observação" [(ngModel)]="produto.observacao">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -117,7 +115,7 @@
                             <table class="table" id="dataTable">
                                 <thead class=" text-primary">
                                     <th>
-                                        Código
+                                        ID
                                     </th>
                                     <th>
                                         Cód. Barra
@@ -139,37 +137,49 @@
                                         Estoque
                                     </th>
                                     <th>
+                                        Lucro
+                                    </th>
+                                    <th>
+                                        NCM
+                                    </th>
+                                    <th>
+                                        Peso Bruto
+                                    </th>
+                                    <th>
+                                        Peso Liquido
+                                    </th>
+                                    <th>
+                                        Observação
+                                    </th>
+                                    <th>
                                         Ações
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let p of produtos">
-                                        <td></td>
-                                        <td>{{p.nome}}
+                                    <tr *ngFor="let produto of produtos">
+                                        <td>{{produto.id}}</td>
+                                        <td>{{produto.cod_barras}}</td>
+                                        <td>{{produto.nome}}
                                         </td>
-                                        <td>{{p.descricao}}
+                                        <td>{{produto.descricao}}
                                         </td>
-                                        <td>{{p.unid}}
+                                        <td>{{produto.unid}}
                                         </td>
-                                        <td>{{p.vr_compra}}
+                                        <td>{{produto.vr_compra}}
                                         </td>
-                                        <td>{{p.vr_venda}}
+                                        <td>{{produto.vr_venda}}
                                         </td>
-                                        <td>{{p.estoque}}
+                                        <td>{{produto.estoque}}
                                         </td>
-                                        <td>{{p.sku}}
+                                         <td>{{produto.lucro}}
                                         </td>
-                                        <td>{{p.red_ivast}}
+                                        <td>{{produto.ncm}}
                                         </td>
-                                        <td>{{p.lucro}}
+                                        <td>{{produto.peso_bruto}}
                                         </td>
-                                        <td>{{p.ncm}}
+                                        <td>{{produto.peso_liq}}
                                         </td>
-                                        <td>{{p.peso_bruto}}
-                                        </td>
-                                        <td>{{p.peso_liq}}
-                                        </td>
-                                        <td>{{p.observacao}}
+                                        <td>{{produto.observacao}}
                                         </td>
                                         <td class="td-actions text-right">
                                             <button mat-raised-button type="button" matTooltip="Editar"

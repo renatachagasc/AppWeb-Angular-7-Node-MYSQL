@@ -11,7 +11,7 @@ exports.criarProduto = (req,res,next)=>{
 };
 
 exports.listarProduto = (req,res,next)=>{
-    Produto.findAll({attributes: ["id", "cod","unid","nome","descricao","vr_compra","vr_venda","estoque","sku","red_ivast","lucro","ncm","peso_bruto","peso_liq","observacao"]}).then((produtos)=>{
+    Produto.findAll({attributes: ["id", "cod_barras","unid","nome","descricao","vr_compra","vr_venda","estoque","lucro","ncm","peso_bruto","peso_liq","observacao"]}).then((produtos)=>{
         res.status(status.OK).send(produtos);
     }).catch((erro)=>{
         next(erro);
@@ -58,8 +58,9 @@ exports.atualizarProduto = (req,res,next)=>{
     }else{
         Produto.findByPk(id).then((produto)=>{
             if (produto){
-                Produto.update({nome: produtoBody.nome, status : produtoBody.status, codigo: produtoBody.codigo, 
-                preco: produtoBody.preco, qtdEstoque: produtoBody.qtdEstoque, categoria: produtoBody.categoria},{where : {id : id}}).then(()=>{
+
+                Produto.update({cod_barras: produtoBody.cod_barras, unid: produtoBody.unid, nome: produtoBody.nome, descricao: produtoBody.descricao, vr_compra: produtoBody.vr_compra, vr_venda: produtoBody.vr_venda, estoque: produtoBody.estoque,lucro: produtoBody.lucro,ncm: produtoBody.ncm,peso_bruto: produtoBody.peso_bruto, peso_liq: produtoBody.peso_liq,observacao: produtoBody.observacao},
+                    {where : {id : id}}).then(()=>{
                     res.status(Status.OK).send();
                 }).catch((erro)=>{
                     next(erro);

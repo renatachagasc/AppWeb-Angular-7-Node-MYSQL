@@ -32,7 +32,7 @@ export class EmpresasComponent implements OnInit {
   }
 
   listarEmpresas() {
-    this.empresa_service.listarEmpresa().subscribe(resposta => this.empresa = resposta);
+    this.empresa_service.listarEmpresa().subscribe(resposta => this.empresas = resposta);
   }
   deletarEmpresa(i: any) {
     this.empresa_service.deletarEmpresa(i).subscribe(resposta => {

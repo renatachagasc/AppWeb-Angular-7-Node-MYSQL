@@ -13,7 +13,8 @@ exports.criarContato = (req,res,next)=>{
 };
 
 exports.listarContato = (req,res,next)=>{
-    Tarefa.findAll({attributes: ["id", "tipo_relacao", "nome_fantasia", "razao_social", "cep", "logradouro", "numero", "complemento", "bairro",  "municipio",  "estado", "status", "telefone", "celular", "email"]}).then((tarefas)=>{
+    Contato.findAll({attributes: ["id","nome_fantasia", "razao_social", "cep", "logradouro", "numero", "complemento", 
+    "bairro",  "municipio",  "estado", "telefone", "celular", "email"]}).then((contatos)=>{
         res.status(status.OK).send(contatos);
     }).catch((erro)=>{
         next(erro);
@@ -59,8 +60,8 @@ exports.atualizarContato = (req,res,next)=>{
     }else{
         Contato.findByPk(id).then((contato)=>{
             if (contato){
-                Contato.update({nome: contatoBody.nome, posicao : contatoBody.posicao, empresa: contatoBody.empresa,
-                email: contatoBody.email, telefone: contatoBody.telefone, categoria: contatoBody.categoria},{where : {id : id}}).then(()=>{
+                Contato.update({nome_fantasia: contatoBody.nome_fantasia, razao_social: contatoBody.razao_social, cep: contatoBody.cep, logradouro: contatoBody.logradouro, numero: contatoBody.numero, complemento: contatoBody.complemento, bairro: contatoBody.bairro, municipio: contatoBody.municipio, estado: contatoBody.estado, telefone: contatoBody.telefone, celular: contatoBody.celular,email: contatoBody.email
+            },{where : {id : id}}).then(()=>{
                     res.status(Status.OK).send();
                 }).catch((erro)=>{
                     next(erro);

@@ -17,81 +17,81 @@
                     <div class="card-body">
                         <form #formulario="ngForm" id="formulario" method="POST"  
                         (ngSubmit)="atualizar ? atualizaContato(formulario) : criarContato(formulario)" >
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <select class="selectpicker" placeholder="Tipo_relacao">
-                                        <option>Cliente</option>
-                                        <option>Fornecedor</option>
-                                        <option>Vendedor</option>
-                                    </select>
-                                </div>
+                        <div class="row">
+
+                            <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                    <input id="id" name="id" matInput placeholder="ID" [(ngModel)]="contato.id"
+                                    disabled>
+                                </mat-form-field>
                             </div>
+                        </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="razao_social" name="razao_social" matInput placeholder="Razão Social" [(ngModel)]="c.empresa.razao">
+                                        <input id="razao_social" name="razao_social" matInput placeholder="Razão Social" [(ngModel)]="contato.razao_social">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="nome_fantasia" name="nome_fantasia" matInput placeholder="Nome Fantasia" [(ngModel)]="c.nome_fantasia">
+                                        <input id="nome_fantasia" name="nome_fantasia" matInput placeholder="Nome Fantasia" [(ngModel)]="contato.nome_fantasia">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="cep" name="cep" matInput placeholder="CEP" [(ngModel)]="c.cep">
+                                        <input id="cep" name="cep" matInput placeholder="CEP" [(ngModel)]="contato.cep">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="logradouro" name="logradouro" matInput placeholder="Logradouro" [(ngModel)]="c.logradouro">
+                                        <input id="logradouro" name="logradouro" matInput placeholder="Logradouro" [(ngModel)]="contato.logradouro">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="numero" name="numero" matInput placeholder="Número" [(ngModel)]="c.numero">
+                                        <input id="numero" name="numero" matInput placeholder="Número" [(ngModel)]="contato.numero">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="complemento" name="complemento" matInput placeholder="Complemento" [(ngModel)]="c.complemento">
+                                        <input id="complemento" name="complemento" matInput placeholder="Complemento" [(ngModel)]="contato.complemento">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="bairro" name="bairro" matInput placeholder="Bairro" [(ngModel)]="c.bairro">
+                                        <input id="bairro" name="bairro" matInput placeholder="Bairro" [(ngModel)]="contato.bairro">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="municipio" name="municipio" matInput placeholder="Município" [(ngModel)]="c.municipio">
+                                        <input id="municipio" name="municipio" matInput placeholder="Município" [(ngModel)]="contato.municipio">
                                     </mat-form-field>
                                 </div>
 
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input id="estado" name="estado" matInput placeholder="Estado" [(ngModel)]="c.estado">
+                                        <input id="estado" name="estado" matInput placeholder="Estado" [(ngModel)]="contato.estado">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="telefone" name="telefone" matInput placeholder="Telefone" [(ngModel)]="c.telefone">
+                                        <input id="telefone" name="telefone" matInput placeholder="Telefone" [(ngModel)]="contato.telefone">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input id="celular" name="celular" matInput placeholder="Celular" [(ngModel)]="c.celular">
+                                        <input id="celular" name="celular" matInput placeholder="Celular" [(ngModel)]="contato.celular">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-6">
                                     <mat-form-field class="example-full-width">
-                                        <input id="email" name="email" matInput placeholder="Email address" type="email" [(ngModel)]="c.email">
+                                        <input id="email" name="email" matInput placeholder="Email address" type="email" [(ngModel)]="contato.email">
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        Código
+                                        ID
                                     </th>
                                     <th>
                                         Razão Social
@@ -127,7 +127,13 @@
                                         Número
                                     </th>
                                     <th>
+                                        Complemento
+                                    </th>
+                                    <th>
                                         Bairro
+                                    </th>
+                                    <th>
+                                        Municipio
                                     </th>
                                     <th>
                                         Estado
@@ -165,6 +171,8 @@
                                         </td>
                                         <td>
                                             Neopólis
+                                        </td><td>
+                                            Natal
                                         </td>
                                         <td>
                                             RN
@@ -191,45 +199,45 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let c of contatos">
+                                    <tr *ngFor="let contato of contatos">
                                         <td>
-                                            {{c.tipo_relacao}}
+                                            {{contato.id}}
+                                        </td> 
+                                        <td>
+                                            {{contato.razao_social}}
                                         </td>
                                         <td>
-                                            {{c.razao_social}}
+                                            {{contato.nome_fantasia}}
                                         </td>
                                         <td>
-                                            {{c.nome_fantasia}}
+                                            {{contato.cep}}
                                         </td>
                                         <td>
-                                            {{c.cep}}
+                                            {{contato.logradouro}}
                                         </td>
                                         <td>
-                                            {{c.logradouro}}
+                                            {{contato.numero}}
                                         </td>
                                         <td>
-                                            {{c.numero}}
+                                            {{contato.complemento}}
                                         </td>
                                         <td>
-                                            {{c.complemento}}
+                                            {{contato.bairro}}
                                         </td>
                                         <td>
-                                            {{c.bairro}}
+                                            {{contato.municipio}}
                                         </td>
                                         <td>
-                                            {{c.municipio}}
+                                            {{contato.estado}}
                                         </td>
                                         <td>
-                                            {{c.estado}}
+                                            {{contato.telefone}}
                                         </td>
                                         <td>
-                                            {{c.telefone}}
+                                            {{contato.celular}}
                                         </td>
                                         <td>
-                                            {{c.celular}}
-                                        </td>
-                                        <td>
-                                            {{c.email}}
+                                            {{contato.email}}
                                         </td>
                                         <td class="td-actions text-right">
                                             <button mat-raised-button type="button" matTooltip="Editar"

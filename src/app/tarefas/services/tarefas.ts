@@ -1,4 +1,4 @@
 export class Tarefa {
-    private id: number;
+    private cod_tarefa: number;
     private descricao: String;
 }

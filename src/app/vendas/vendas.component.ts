@@ -31,7 +31,7 @@ export class VendasComponent implements OnInit {
   }
 
   listarVenda() {
-    this.venda_service.listarVenda().subscribe(resposta => this.venda = resposta);
+    this.venda_service.listarVenda().subscribe(resposta => this.vendas = resposta);
   }
   deletarVenda(i: any) {
     this.venda_service.deletarVenda(i).subscribe(resposta => {

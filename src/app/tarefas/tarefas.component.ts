@@ -31,7 +31,7 @@ export class TarefasComponent implements OnInit {
   }
 
   listarTarefa() {
-    this.tarefa_service.listarTarefa().subscribe(resposta => this.tarefa = resposta);
+    this.tarefa_service.listarTarefa().subscribe(resposta => this.tarefas = resposta);
   }
   deletarTarefa(i: any) {
     this.tarefa_service.deletarTarefa(i).subscribe(resposta => {

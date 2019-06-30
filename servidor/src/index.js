@@ -9,12 +9,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/", require("./routers/route"));
-app.use("/venda", require("./routers/rotaVenda"));
-app.use("/fornecedor", require("./routers/rotaFornecedor"));
-app.use("/produto",require("./routers/rotaProduto"));
-//app.use("/tarefas", require("./routers/rotaTarefa"));
+app.use("/contatos", require("./routers/rotaContato"));
 app.use("/empresas", require("./routers/rotaEmpresa"));
-//app.use("/contatos", require("./routers/rotaContato"));
+app.use("/produto",require("./routers/rotaProduto"));
+app.use("/tarefas", require("./routers/rotaTarefa"));
+app.use("/vendas", require("./routers/rotaVenda"));
+//app.use("/fornecedor", require("./routers/rotaFornecedor"));
 
 const cliente = require("./models/cliente");
 const vendedor = require("./models/vendedor");
@@ -27,7 +27,7 @@ app.use((error,req,res,next)=>{
 });
 
 
-//copnexão com o banco e subindo o servidor
+//conexão com o banco e subindo o servidor
 const sequilize = require('./config/banco');
 sequilize.sync({force:false}).then(()=>{
     app.listen(3000, ()=>{

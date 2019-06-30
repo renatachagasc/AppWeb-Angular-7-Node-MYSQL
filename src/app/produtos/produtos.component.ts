@@ -32,7 +32,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   listarProdutos() {
-    this.produto_service.listarProduto().subscribe(resposta => this.produto = resposta);
+    this.produto_service.listarProduto().subscribe(resposta => this.produtos = resposta);
   }
   deletarProduto(i: any) {
     this.produto_service.deletarProduto(i).subscribe(resposta => {

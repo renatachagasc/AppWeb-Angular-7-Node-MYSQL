@@ -30,7 +30,7 @@ export class ContatosComponent implements OnInit {
   }
 
   listarContato() {
-    this.contato_service.listarContato().subscribe(resposta => this.contato = resposta);
+    this.contato_service.listarContato().subscribe(resposta => this.contatos = resposta);
   }
   deletarContato(i: any) {
     this.contato_service.deletarContato(i).subscribe(resposta => {
