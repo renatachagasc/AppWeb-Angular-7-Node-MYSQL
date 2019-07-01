@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use("/", require("./routers/route"));
 app.use("/contatos", require("./routers/rotaContato"));
 app.use("/empresas", require("./routers/rotaEmpresa"));
-app.use("/produto",require("./routers/rotaProduto"));
+app.use("/produtos",require("./routers/rotaProduto"));
 app.use("/tarefas", require("./routers/rotaTarefa"));
 app.use("/vendas", require("./routers/rotaVenda"));
 //app.use("/fornecedor", require("./routers/rotaFornecedor"));

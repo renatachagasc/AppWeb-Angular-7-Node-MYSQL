@@ -5,13 +5,13 @@ const conSequelize = require('../config/banco');
 const Produto = conSequelize.define('produto',{
     id: {type: sequelize.INTEGER, primaryKey: true, autoIncrement: true},
     cod_barras: {type: sequelize.INTEGER, allowNull: false},
-    unid: {type: sequelize.INTEGER, allowNull: false},
     nome: {type: sequelize.STRING(255), allowNull: false,validate:{
         len: [2, 255]
     }},
     descricao: {type: sequelize.STRING(255), allowNull: false,validate:{
         len: [2, 255]
     }},
+    unid: {type: sequelize.INTEGER, allowNull: false},  
     vr_compra: {type: sequelize.FLOAT, allowNull: false},
     vr_venda: {type: sequelize.FLOAT, allowNull: false},
     estoque: {type: sequelize.INTEGER, allowNull: false},
