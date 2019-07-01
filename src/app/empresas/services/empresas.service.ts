@@ -24,10 +24,8 @@ export class EmpresasService {
     return this.http.post(this.URL_SERVIDOR, empresa);
   }
 
-  deletarEmpresa(empresa: any) {
-
-    console.log(empresa);
-    return this.http.delete(this.URL_SERVIDOR + '/' + empresa);
+  deletarEmpresa(id: any) {
+    return this.http.delete(this.URL_SERVIDOR + '/' + id);
 
   }
   atualizarEmpresa(id: any, update: any): Observable<any> {

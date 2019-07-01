@@ -23,11 +23,8 @@ export class ProdutosService {
     return this.http.post(this.URL_SERVIDOR, produto);
   }
 
-  deletarProduto(produto: any) {
-
-    console.log(produto);
-    return this.http.delete(this.URL_SERVIDOR + '/' + produto);
-
+  deletarProduto(id: any) {
+    return this.http.delete(this.URL_SERVIDOR + '/' + id);
   }
   atualizarProduto(id: any, update: any): Observable<any> {
     return this.http.put(`${this.URL_SERVIDOR}`, update);

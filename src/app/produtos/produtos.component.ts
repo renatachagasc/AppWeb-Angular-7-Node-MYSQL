@@ -28,6 +28,7 @@ export class ProdutosComponent implements OnInit {
 
   criarProduto(formulario: FormGroup) {
     this.produto_service.criarProduto(this.produto).subscribe(resposta => {
+      this.listarProduto();
     });
     formulario.reset();
   }
@@ -35,13 +36,12 @@ export class ProdutosComponent implements OnInit {
   listarProduto() {
     this.produto_service.listarProduto().subscribe(resposta => this.produtos = resposta);
   }
-  deletarProduto(i: any) {
-    this.produto_service.deletarProduto(i).subscribe(resposta => {
-
+  deletarProduto(produto: any) {
+    this.produto_service.deletarProduto(produto.id).subscribe(resposta => {
       this.listarProduto();
     });
-
   }
+
   atualizarProduto(formulario: FormGroup) {
     this.produto_service.atualizarProduto(this.produto.id, this.produto).subscribe(resposta => {
       console.log(resposta);

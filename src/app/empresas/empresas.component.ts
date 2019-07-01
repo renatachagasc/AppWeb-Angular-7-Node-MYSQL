@@ -28,16 +28,16 @@ export class EmpresasComponent implements OnInit {
 
   criarEmpresa(formulario: FormGroup) {
     this.empresa_service.criarEmpresa(this.empresa).subscribe(resposta => {
-    });
+      this.listarEmpresa();
+     });
     formulario.reset();
   }
 
   listarEmpresa() {
     this.empresa_service.listarEmpresa().subscribe(resposta => this.empresas = resposta);
   }
-  deletarEmpresa(i: any) {
-    this.empresa_service.deletarEmpresa(i).subscribe(resposta => {
-
+  deletarEmpresa(empresa: any) {
+    this.empresa_service.deletarEmpresa(empresa.id).subscribe(resposta => {
       this.listarEmpresa();
     });
 

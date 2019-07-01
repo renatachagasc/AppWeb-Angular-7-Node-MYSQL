@@ -24,10 +24,9 @@ export class VendasService {
     return this.http.post(this.URL_SERVIDOR, venda);
   }
 
-  deletarVenda(venda: any) {
+  deletarVenda(id: any) {
 
-    console.log(venda);
-    return this.http.delete(this.URL_SERVIDOR + '/' + venda);
+    return this.http.delete(this.URL_SERVIDOR + '/' + id);
 
   }
   atualizarVenda(id: any, update: any): Observable<any> {

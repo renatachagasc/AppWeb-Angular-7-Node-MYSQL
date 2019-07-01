@@ -26,6 +26,7 @@ export class VendasComponent implements OnInit {
 
   criarVenda(formulario: FormGroup) {
     this.venda_service.criarVenda(this.venda).subscribe(resposta => {
+      this.listarVenda();
     });
     formulario.reset();
   }
@@ -33,16 +34,13 @@ export class VendasComponent implements OnInit {
   listarVenda() {
     this.venda_service.listarVenda().subscribe(resposta => this.vendas = resposta);
   }
-  deletarVenda(i: any) {
-    this.venda_service.deletarVenda(i).subscribe(resposta => {
+  deletarVenda(venda: any) {
+    this.venda_service.deletarVenda(venda.id).subscribe(resposta => {
       this.listarVenda();
-    });
-
+      });
   }
   atualizarVenda(formulario: FormGroup) {
     this.venda_service.atualizarVenda(this.venda.id, this.venda).subscribe(resposta => {
-      console.log(resposta);
-
     });
     formulario.reset();
 

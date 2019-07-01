@@ -25,6 +25,7 @@ export class ContatosComponent implements OnInit {
 
   criarContato(formulario: FormGroup) {
     this.contato_service.criarContato(this.contato).subscribe(resposta => {
+      this.listarContato();
     });
     formulario.reset();
   }
@@ -32,9 +33,8 @@ export class ContatosComponent implements OnInit {
   listarContato() {
     this.contato_service.listarContato().subscribe(resposta => this.contatos = resposta);
   }
-  deletarContato(i: any) {
-    this.contato_service.deletarContato(i).subscribe(resposta => {
-
+  deletarContato(contato: any) {
+    this.contato_service.deletarContato(contato.id).subscribe(resposta => {
       this.listarContato();
     });
 

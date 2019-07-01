@@ -21,7 +21,7 @@
 
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
-                                        <input id="id" name="id" matInput placeholder="Código" [(ngModel)]="tarefa.id"
+                                        <input id="id" name="id" matInput placeholder="ID" [(ngModel)]="tarefa.id"
                                         disabled>
                                     </mat-form-field>
                                 </div>
@@ -50,7 +50,7 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                     <th>
-                                        Código
+                                        ID
                                     </th>
                                     <th>
                                         Descrição
@@ -60,27 +60,7 @@
                                     </th>
 
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            Dakota
-                                        </td>
-                                        <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Editar"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">edit</i>
-                                            </button>
-                                            <button mat-raised-button type="button" matTooltip="Remover"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                <tbody>                                    
                                     <tr *ngFor="let tarefa of tarefas">
                                         <td>
                                             {{tarefa.id}}
@@ -89,12 +69,12 @@
                                             {{tarefa.descricao}}
                                         </td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Editar"
+                                            <button mat-raised-button type="button" (click)="atualizarTarefa(tarefa)" matTooltip="Editar"
                                                 [matTooltipPosition]="'above'"
                                                 class="btn btn-primary btn-link btn-sm btn-just-icon">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remover"
+                                            <button mat-raised-button type="button" (click)="deletarTarefa(tarefa)" matTooltip="Remover"
                                                 [matTooltipPosition]="'above'"
                                                 class="btn btn-danger btn-link btn-sm btn-just-icon">
                                                 <i class="material-icons">close</i>

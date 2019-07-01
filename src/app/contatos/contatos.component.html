@@ -153,52 +153,6 @@
 
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            Dakota
-                                        </td>
-                                        <td>
-                                            Niger
-                                        </td>
-                                        <td>
-                                            Oud-Turnhout
-                                        </td>
-                                        <td>
-                                            845
-                                        </td>
-                                        <td>
-                                            Neopólis
-                                        </td><td>
-                                            Natal
-                                        </td>
-                                        <td>
-                                            RN
-                                        </td>
-                                        <td>
-                                            94682005
-                                        </td>
-                                        <td>
-                                            94682005
-                                        </td>
-                                        <td>
-                                            Oud-Turnhout@gmail.com
-                                        </td>
-                                        <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Editar"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">edit</i>
-                                            </button>
-                                            <button mat-raised-button type="button" matTooltip="Remover"
-                                                [matTooltipPosition]="'above'"
-                                                class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                                <i class="material-icons">close</i>
-                                            </button>
-                                        </td>
-                                    </tr>
                                     <tr *ngFor="let contato of contatos">
                                         <td>
                                             {{contato.id}}
@@ -245,7 +199,7 @@
                                                 class="btn btn-primary btn-link btn-sm btn-just-icon">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remover"
+                                            <button mat-raised-button type="button" (click)="deletarContato(contato)" matTooltip="Remover"
                                                 [matTooltipPosition]="'above'"
                                                 class="btn btn-danger btn-link btn-sm btn-just-icon">
                                                 <i class="material-icons">close</i>

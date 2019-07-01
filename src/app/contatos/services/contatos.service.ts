@@ -23,10 +23,8 @@ export class ContatosService {
     return this.http.post(this.URL_SERVIDOR, contato);
   }
 
-  deletarContato(contato: any) {
-
-    console.log(contato);
-    return this.http.delete(this.URL_SERVIDOR + '/' + contato);
+  deletarContato(id: any) {
+    return this.http.delete(this.URL_SERVIDOR + '/' + id);
 
   }
   atualizarContato(id: any, update: any): Observable<any> {

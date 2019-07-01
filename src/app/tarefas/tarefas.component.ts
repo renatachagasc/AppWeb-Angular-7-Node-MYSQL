@@ -23,29 +23,25 @@ export class TarefasComponent implements OnInit {
     this.tarefa = {};
     this.listarTarefa()
   }
-
   criarTarefa(formulario: FormGroup) {
     this.tarefa_service.criarTarefa(this.tarefa).subscribe(resposta => {
+      this.listarTarefa();
     });
     formulario.reset();
   }
-
   listarTarefa() {
     this.tarefa_service.listarTarefa().subscribe(resposta => this.tarefas = resposta);
   }
-  deletarTarefa(i: any) {
-    this.tarefa_service.deletarTarefa(i).subscribe(resposta => {
-
-      this.listarTarefa();
+  deletarTarefa(tarefa: any) {
+    this.tarefa_service.deletarTarefa(tarefa.id).subscribe(resposta => {
+    
     });
-
+    this.listarTarefa();
   }
   atualizarTarefa(formulario: FormGroup) {
     this.tarefa_service.atualizarTarefa(this.tarefa.id, this.tarefa).subscribe(resposta => {
-      console.log(resposta);
-
+  
     });
     formulario.reset();
-
   }
 }

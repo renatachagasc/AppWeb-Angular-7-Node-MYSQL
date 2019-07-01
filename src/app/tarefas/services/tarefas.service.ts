@@ -14,20 +14,14 @@ export class TarefasService {
   constructor(private http: HttpClient) {
     this.tarefas = [];
   }
-
   listarTarefa() {
     return this.http.get<Array<any>>(`${this.URL_SERVIDOR}`);
   }
-
   criarTarefa(tarefa: any) {
     return this.http.post(this.URL_SERVIDOR, tarefa);
   }
-
-  deletarTarefa(tarefa: any) {
-
-    console.log(tarefa);
-    return this.http.delete(this.URL_SERVIDOR + '/' + tarefa);
-
+  deletarTarefa(id: any) {
+    return this.http.delete(this.URL_SERVIDOR + '/' + id);
   }
   atualizarTarefa(id: any, update: any): Observable<any> {
     return this.http.put(`${this.URL_SERVIDOR}`, update);
