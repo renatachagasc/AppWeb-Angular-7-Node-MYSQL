@@ -17,7 +17,15 @@
                     <div class="card-body">
                         <form #formulario="ngForm" id="formulario" method="POST"  
                         (ngSubmit)="atualizar ? atualizaVenda(formulario) : criarVenda(formulario)">
-                            <div class="row">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <mat-form-field class="example-full-width">
+                                    <input id="id" name="id" matInput placeholder="Código" [(ngModel)]="venda.id"
+                                    disabled>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
                                         <input id="data" name="data" matInput placeholder="Data" [(ngModel)]="venda.data">
@@ -50,11 +58,6 @@
                                 <div class="col-md-2">
                                     <mat-form-field class="example-full-width">
                                         <input id="cod_barras" name="cod_barras" matInput placeholder="Cód. Barras" [(ngModel)]="venda.cod_barras">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-md-2">
-                                    <mat-form-field class="example-full-width">
-                                        <input id="ncm" name="ncm" matInput placeholder="NCM" [(ngModel)]="venda.ncm">
                                     </mat-form-field>
                                 </div>
                                 <div class="col-md-2">
@@ -211,6 +214,8 @@
                                     </tr>
                                     <tr *ngFor="let venda of vendas">
                                         <td>
+                                            {{venda.id}}
+                                        </td><td>
                                             {{venda.data}}
                                         </td>
                                         <td>
@@ -227,9 +232,6 @@
                                         </td>
                                         <td>
                                             {{venda.cod_barras}}
-                                        </td>
-                                        <td>
-                                            {{venda.ncm}}
                                         </td>
                                         <td>
                                             {{venda.unid}}

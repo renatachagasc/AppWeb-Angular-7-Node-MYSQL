@@ -21,7 +21,7 @@ export class VendasComponent implements OnInit {
   }
   ngOnInit() {
     this.venda = {};
-
+    this.listarVenda()
   }
 
   criarVenda(formulario: FormGroup) {
@@ -35,7 +35,6 @@ export class VendasComponent implements OnInit {
   }
   deletarVenda(i: any) {
     this.venda_service.deletarVenda(i).subscribe(resposta => {
-
       this.listarVenda();
     });
 

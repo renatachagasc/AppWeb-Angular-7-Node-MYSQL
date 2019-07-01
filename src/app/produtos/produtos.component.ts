@@ -22,6 +22,7 @@ export class ProdutosComponent implements OnInit {
   }
   ngOnInit() {
     this.produto = {};
+    this.listarProduto()
   }
 
 
@@ -31,13 +32,13 @@ export class ProdutosComponent implements OnInit {
     formulario.reset();
   }
 
-  listarProdutos() {
+  listarProduto() {
     this.produto_service.listarProduto().subscribe(resposta => this.produtos = resposta);
   }
   deletarProduto(i: any) {
     this.produto_service.deletarProduto(i).subscribe(resposta => {
 
-      this.listarProdutos();
+      this.listarProduto();
     });
 
   }

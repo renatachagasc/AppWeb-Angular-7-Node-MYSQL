@@ -21,7 +21,7 @@ export class TarefasComponent implements OnInit {
   }
   ngOnInit() {
     this.tarefa = {};
-
+    this.listarTarefa()
   }
 
   criarTarefa(formulario: FormGroup) {

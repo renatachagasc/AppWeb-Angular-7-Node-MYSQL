@@ -20,7 +20,7 @@ export class ContatosComponent implements OnInit {
   }
   ngOnInit() {
     this.contato = {};
-
+    this.listarContato()
   }
 
   criarContato(formulario: FormGroup) {

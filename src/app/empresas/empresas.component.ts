@@ -22,6 +22,7 @@ export class EmpresasComponent implements OnInit {
   }
   ngOnInit() {
     this.empresa = {};
+    this.listarEmpresa()
 
   }
 
@@ -31,13 +32,13 @@ export class EmpresasComponent implements OnInit {
     formulario.reset();
   }
 
-  listarEmpresas() {
+  listarEmpresa() {
     this.empresa_service.listarEmpresa().subscribe(resposta => this.empresas = resposta);
   }
   deletarEmpresa(i: any) {
     this.empresa_service.deletarEmpresa(i).subscribe(resposta => {
 
-      this.listarEmpresas();
+      this.listarEmpresa();
     });
 
   }
