@@ -1,10 +1,10 @@
 const sequilize = require('sequelize');
 
-const sequelizeconexion = new sequilize("dbpdv", "renata","renatachagasc_123", {
+const sequelizeconexion = new sequilize("dbpdv", "root","", {
     host : "localhost",
     dialect : "mysql",
     port : 3306,
-    operatorsAliases: false
+    operatorsAliases: false    
 });
 
 module.exports = sequelizeconexion;

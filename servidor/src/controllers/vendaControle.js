@@ -14,9 +14,9 @@ exports.criarVenda = (req,res,next)=>{
 
 
 exports.listarVenda = (req,res,next)=>{
-    Venda.findAll({attributes: ["id", "cod","data","cliente","vendedor","total_pago",
-    "cod_interno","estoque","item","unid","valor_unit","sub_total","desconto","total",
-    "descricao"]}).then((vendas)=>{
+    Venda.findAll({attributes: ["id","data","cliente","vendedor",
+    "cod_interno","item","cod_barras","unid","quantidade","vr_unitario","sub_total","desconto_porcento","desconto_reais","total",
+    "observacao"]}).then((vendas)=>{
         res.status(status.OK).send(vendas);
     }).catch((error)=>{
         next(erro);
@@ -65,16 +65,11 @@ exports.atualizarVenda = (req,res,next)=>{
     }else{
         Venda.findByPk(id).then((venda)=>{
             if (venda){               
-                    Venda.update({cod: vendaBody.cod, data : vendaBody.data, 
-                    cliente: vendaBody.cliente, vendedor: vendaBody.vendedor,
-                    total_pago: vendaBody.total_pago,
-                    cod_interno: vendaBody.cod_interno, estoque: vendaBody.estoque,
-                    item: vendaBody.item,
-                    unid: vendaBody.unid, valor_unit: vendaBody.valor_unit,
-                    desconto: vendaBody.desconto,
-                    total: vendaBody.total, descricao: vendaBody.descricao
-
-                    },{where : {id : id}}).then(()=>{
+                    Venda.update({data : vendaBody.data, cliente: vendaBody.cliente, vendedor: vendaBody.vendedor,
+                     cod_interno: vendaBody.cod_interno, item: vendaBody.item, cod_barras: vendaBody.cod_barras, estoque: vendaBody.estoque,
+                     unid: vendaBody.unid, quantidade: vendaBody.quantidade, vr_unitario: vendaBody.vr_unitario, sub_total: vendaBody.sub_total,
+                     desconto_porcento: vendaBody.desconto_porcento, desconto_reais: vendaBody.desconto_reais,
+                    total: vendaBody.total, observacao: vendaBody.observacao},{where : {id : id}}).then(()=>{
                     res.status(status.OK).send();
                 }).catch((erro)=>{
                     next(erro);
