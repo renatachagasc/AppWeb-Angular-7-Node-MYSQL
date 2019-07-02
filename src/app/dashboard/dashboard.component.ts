@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutosService } from 'app/produtos/services/produtos.service';
-import { EmpresasService } from 'app/empresas/services/empresas.service';
+import { VendasService } from 'app/vendas/services/vendas.service';
 
 
 @Component({
@@ -13,11 +13,11 @@ export class DashboardComponent implements OnInit {
   produtos: Array<any>;
   produto: any;
   private formActived = false;
-  empresas: Array<any>;
-  empresa: any;
+  vendas: Array<any>;
+  venda: any;
   atualizar: boolean;
 
-  constructor(private produto_service: ProdutosService, private empresa_service: EmpresasService) { 
+  constructor(private produto_service: ProdutosService, private venda_service: VendasService) { 
   }
   public activeForm() {
     this.formActived = true;
@@ -25,14 +25,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.produto = {};
     this.listarProduto()
-    this.empresa = {};
-    this.listarEmpresa()
+    this.venda = {};
+    this.listarVenda()
   }
   listarProduto() {
     this.produto_service.listarProduto().subscribe(resposta => this.produtos = resposta);
   }
-  listarEmpresa() {
-    this.empresa_service.listarEmpresa().subscribe(resposta => this.empresas = resposta);
+  listarVenda() {
+    this.venda_service.listarVenda().subscribe(resposta => this.vendas = resposta);
   }
 
 }
