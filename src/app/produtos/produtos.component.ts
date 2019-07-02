@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Produto } from './services/produto';
 import { ProdutosService } from './services/produtos.service';
 import { FormGroup } from '@angular/forms';
 

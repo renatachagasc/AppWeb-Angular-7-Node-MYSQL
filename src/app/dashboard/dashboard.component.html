@@ -1,13 +1,14 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
+                            <i class="material-icons">trending_up</i>
                         </div>
-                        <p class="card-category">Vendas Hoje</p>
+                        <p class="card-category">Vendas Mensais</p>
                         <h3 class="card-title">0,00</h3>
                     </div>
                 </div>
@@ -16,20 +17,20 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">store</i>
+                            <i class="material-icons">local_offer</i>
                         </div>
-                        <p class="card-category">Vendas mês</p>
+                        <p class="card-category">Produtos Mens.</p>
                         <h3 class="card-title">0,00</h3>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
+                    <div class="card-header card-header-primary card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">domain</i>
                         </div>
-                        <p class="card-category">Receber Hoje</p>
+                        <p class="card-category">Empresas Mens.</p>
                         <h3 class="card-title">0,00</h3>
                     </div>
                 </div>
@@ -38,13 +39,214 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="material-icons">dvr</i>
                         </div>
-                        <p class="card-category">Pagar Hoje</p>
+                        <p class="card-category">Tarefas Mens.</p>
                         <h3 class="card-title">0,00</h3>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">Produtos Cadastrados</h4>
+                                <p class="card-category"> Produtos cadastrados no sistema</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="dataTable">
+                                        <thead class=" text-warning">
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Cód. Barra
+                                            </th>
+                                            <th> Nome</th>
+                                            <th>
+                                                Descrição
+                                            </th>
+                                            <th>
+                                                Unid.
+                                            </th>
+                                            <th>
+                                                Vr. Compra
+                                            </th>
+                                            <th>
+                                                Vr. Venda
+                                            </th>
+                                            <th>
+                                                Estoque
+                                            </th>
+                                            <th>
+                                                Lucro
+                                            </th>
+                                            <th>
+                                                NCM
+                                            </th>
+                                            <th>
+                                                Peso Bruto
+                                            </th>
+                                            <th>
+                                                Peso Liquido
+                                            </th>
+                                            <th>
+                                                Observação
+                                            </th>
+                                            <th>
+                                                Ações
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let produto of produtos">
+                                                <td>{{produto.id}}</td>
+                                                <td>{{produto.cod_barras}}</td>
+                                                <td>{{produto.nome}}
+                                                </td>
+                                                <td>{{produto.descricao}}
+                                                </td>
+                                                <td>{{produto.unid}}
+                                                </td>
+                                                <td>{{produto.vr_compra}}
+                                                </td>
+                                                <td>{{produto.vr_venda}}
+                                                </td>
+                                                <td>{{produto.estoque}}
+                                                </td>
+                                                 <td>{{produto.lucro}}
+                                                </td>
+                                                <td>{{produto.ncm}}
+                                                </td>
+                                                <td>{{produto.peso_bruto}}
+                                                </td>
+                                                <td>{{produto.peso_liq}}
+                                                </td>
+                                                <td>{{produto.observacao}}
+                                                </td>
+                                                <td class="td-actions text-right">
+                                                    <button mat-raised-button type="button" matTooltip="Editar"
+                                                        [matTooltipPosition]="'above'"
+                                                        class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                    <button mat-raised-button type="button" (click)="deletarProduto(produto)" matTooltip="Remover"
+                                                        [matTooltipPosition]="'above'"
+                                                        class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                        <i class="material-icons">close</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title ">Empresas Cadastrados</h4>
+                            <p class="card-category"> Empresas cadastrados no sistema</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-warning">
+                                        <th>
+                                            ID
+                                        </th><th>
+                                            CNPJ
+                                        </th>
+                                        <th>
+                                            Razão Social
+                                        </th>
+                                        <th>
+                                            Nome Fantasia
+                                        </th>
+                                        <th>
+                                            CEP
+                                        </th>
+                                        <th>
+                                            Logradouro
+                                        </th>
+                                        <th>
+                                            Número
+                                        </th>
+                                        <th>
+                                            Complemento
+                                        </th>
+                                        <th>
+                                            Bairro
+                                        </th>
+                                        <th>
+                                            Estado
+                                        </th>
+                                        <th>
+                                            Inscrição Estadual
+                                        </th>
+                                        <th>
+                                            Inscrição Municipal
+                                        </th>
+                                        <th>
+                                            Ie Substituto                                    
+                                        </th>
+                                        <th>
+                                            Telefone
+                                        </th>
+                                        <th>
+                                            Celular
+                                        </th>
+                                        <th>Site</th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Ações
+                                        </th>
+    
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let empresa of empresas">
+                                            <td>{{empresa.id}}</td>
+                                            <td>{{empresa.cnpj}}</td>
+                                            <td>{{empresa.razao_social}}</td>
+                                            <td>{{empresa.nome_fantasia}}</td>
+                                            <td>{{empresa.cep}}</td>
+                                            <td>{{empresa.logradouro}}</td>
+                                            <td>{{empresa.numero}}</td>
+                                            <td>{{empresa.complemento}}</td>
+                                            <td>{{empresa.bairro}}</td>
+                                            <td>{{empresa.municipio}}</td>
+                                            <td>{{empresa.estado}}</td>
+                                            <td>{{empresa.inscricao_estadual}}</td>
+                                            <td>{{empresa.inscricao_municipal}}</td>
+                                            <td>{{empresa.telefone}}</td>
+                                            <td>{{empresa.celular}}</td>
+                                            <td>{{empresa.site}}</td>
+                                            <td>{{empresa.email}}</td>
+    
+                                            <td class="td-actions text-right">
+                                                <button mat-raised-button type="button" matTooltip="Editar"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button mat-raised-button type="button" (click)="deletarEmpresa(empresa)" matTooltip="Remover"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
         </div>
     </div>
   </div>
